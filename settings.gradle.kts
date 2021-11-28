@@ -17,6 +17,7 @@ dependencyResolutionManagement {
         maven("https://oss.sonatype.org/content/repositories/snapshots/")
         maven("https://nexus.velocitypowered.com/repository/maven-public/")
         maven("https://repo.opencollab.dev/maven-snapshots/")
+        maven("https://repo.rosewooddev.io/repository/public/")
     }
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
 }

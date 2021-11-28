@@ -8,4 +8,5 @@ dependencies {
     compileOnly(libs.authlib)
     compileOnly(libs.libsDisguises)
     compileOnly(libs.essentials)
+    compileOnly(libs.bundles.spigot)
 }

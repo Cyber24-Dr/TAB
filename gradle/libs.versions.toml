@@ -69,3 +69,48 @@ redisBungee = { group = "com.imaginarycode.minecraft", name = "RedisBungee", ver
 bstats-bukkit = { group = "org.bstats", name = "bstats-bukkit", version.ref = "bstats" }
 bstats-bungeecord = { group = "org.bstats", name = "bstats-bungeecord", version.ref = "bstats" }
 bstats-velocity = { group = "org.bstats", name = "bstats-velocity", version.ref = "bstats" }
+
+# NMS
+spigot-1_8 = { group = "org.spigotmc", name = "spigot", version = "1.8" }
+spigot-1_8_3 = { group = "org.spigotmc", name = "spigot", version = "1.8.3" }
+spigot-1_8_8 = { group = "org.spigotmc", name = "spigot", version = "1.8.8" }
+spigot-1_9_2 = { group = "org.spigotmc", name = "spigot", version = "1.9.2" }
+spigot-1_9_4 = { group = "org.spigotmc", name = "spigot", version = "1.9.4" }
+spigot-1_10_2 = { group = "org.spigotmc", name = "spigot", version = "1.10.2" }
+spigot-1_11_2 = { group = "org.spigotmc", name = "spigot", version = "1.11.2" }
+spigot-1_12_2 = { group = "org.spigotmc", name = "spigot", version = "1.12.2" }
+spigot-1_13 = { group = "org.spigotmc", name = "spigot", version = "1.13" }
+spigot-1_13_2 = { group = "org.spigotmc", name = "spigot", version = "1.13.2" }
+spigot-1_14_4 = { group = "org.spigotmc", name = "spigot", version = "1.14.4" }
+spigot-1_15_2 = { group = "org.spigotmc", name = "spigot", version = "1.15.2" }
+spigot-1_16_1 = { group = "org.spigotmc", name = "spigot", version = "1.16.1" }
+spigot-1_16_2 = { group = "org.spigotmc", name = "spigot", version = "1.16.2" }
+spigot-1_16_3 = { group = "org.spigotmc", name = "spigot", version = "1.16.3" }
+spigot-1_16_4 = { group = "org.spigotmc", name = "spigot", version = "1.16.4" }
+spigot-1_16_5 = { group = "org.spigotmc", name = "spigot", version = "1.16.5" }
+spigot-1_17 = { group = "org.spigotmc", name = "spigot", version = "1.17" }
+spigot-1_17_1 = { group = "org.spigotmc", name = "spigot", version = "1.17.1" }
+
+[bundles]
+
+spigot = [
+    "spigot-1_8",
+    "spigot-1_8_3",
+    "spigot-1_8_8",
+    "spigot-1_9_2",
+    "spigot-1_9_4",
+    "spigot-1_10_2",
+    "spigot-1_11_2",
+    "spigot-1_12_2",
+    "spigot-1_13",
+    "spigot-1_13_2",
+    "spigot-1_14_4",
+    "spigot-1_15_2",
+    "spigot-1_16_1",
+    "spigot-1_16_2",
+    "spigot-1_16_3",
+    "spigot-1_16_4",
+    "spigot-1_16_5",
+    "spigot-1_17",
+    "spigot-1_17_1"
+]
