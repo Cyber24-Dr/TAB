@@ -1,5 +1,6 @@
 package me.neznamy.tab.platforms.bukkit.nms.datawatcher;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import me.neznamy.tab.platforms.bukkit.nms.AdapterProvider;
@@ -49,12 +50,7 @@ public class DataWatcher {
 		return helper;
 	}
 
-	/**
-	 * Reads NMS data watcher and returns and instance of this class with same data
-	 * @param nmsWatcher - NMS datawatcher to read
-	 * @return an instance of this class with same values
-	 */
-	public static DataWatcher fromNMS(Object nmsWatcher) {
-		return AdapterProvider.get().adaptDataWatcher(nmsWatcher);
+	public Collection<DataWatcherItem> getItems() {
+		return dataValues.values();
 	}
 }

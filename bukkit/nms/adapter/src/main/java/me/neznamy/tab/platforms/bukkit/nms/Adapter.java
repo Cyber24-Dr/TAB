@@ -68,10 +68,10 @@ public interface Adapter {
 
     Object createChatPacket(Object component, PacketPlayOutChat.ChatMessageType messageType);
 
-    Object createPlayerInfoPacket(PacketPlayOutPlayerInfo.EnumPlayerInfoAction action,
+    Object createPlayerInfoPacket(ProtocolVersion clientVersion, PacketPlayOutPlayerInfo.EnumPlayerInfoAction action,
                                   List<PacketPlayOutPlayerInfo.PlayerInfoData> players);
 
-    Object createPlayerListHeaderFooterPacket(IChatBaseComponent header, IChatBaseComponent footer);
+    Object createPlayerListHeaderFooterPacket(ProtocolVersion clientVersion, IChatBaseComponent header, IChatBaseComponent footer);
 
     Object createDisplayObjectivePacket(int slot, String objectiveName);
 
@@ -80,8 +80,9 @@ public interface Adapter {
 
     Object createScorePacket(PacketPlayOutScoreboardScore.Action action, String objectiveName, String player, int score);
 
-    Object createTeamPacket(String name, String prefix, String suffix, String nametagVisibility, String collisionRule,
-                            EnumChatFormat color, Collection<String> players, int method, int options);
+    Object createTeamPacket(ProtocolVersion clientVersion, String name, String prefix, String suffix,
+                            String nametagVisibility, String collisionRule, EnumChatFormat color,
+                            Collection<String> players, int method, int options);
 
     Object createEntityDestroyPacket(int[] entities);
 
