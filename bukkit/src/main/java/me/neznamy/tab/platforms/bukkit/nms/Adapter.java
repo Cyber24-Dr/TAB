@@ -22,17 +22,17 @@ public interface Adapter {
 
     DataWatcherRegistry getDataWatcherRegistry();
 
-    DataWatcher adaptDataWatcher(Object dataWatcher);
+    DataWatcher adaptDataWatcher(Object dataWatcher) throws ReflectiveOperationException;
 
-    Channel getChannel(Player player);
+    Channel getChannel(Player player) throws ReflectiveOperationException;
 
-    int getPing(Player player);
+    int getPing(Player player) throws ReflectiveOperationException;
 
-    Object getSkin(Player player);
+    Object getSkin(Player player) throws ReflectiveOperationException;
 
-    void sendPacket(Player player, Object packet);
+    void sendPacket(Player player, Object packet) throws ReflectiveOperationException;
 
-    IChatBaseComponent adaptComponent(Object component);
+    IChatBaseComponent adaptComponent(Object component) throws ReflectiveOperationException;
 
     boolean isPlayerInfoPacket(Object packet);
 
@@ -58,25 +58,25 @@ public interface Adapter {
 
     boolean isMetadataPacket(Object packet);
 
-    boolean isInteractionAction(Object packet);
+    boolean isInteractionAction(Object packet) throws ReflectiveOperationException;
 
-    Collection<String> getTeamPlayers(Object teamPacket);
+    Collection<String> getTeamPlayers(Object teamPacket) throws ReflectiveOperationException;
 
-    void setTeamPlayers(Object teamPacket, Collection<String> players);
+    void setTeamPlayers(Object teamPacket, Collection<String> players) throws ReflectiveOperationException;
 
-    String getTeamName(Object teamPacket);
+    String getTeamName(Object teamPacket) throws ReflectiveOperationException;
 
-    Object createChatPacket(Object component, PacketPlayOutChat.ChatMessageType messageType);
+    Object createChatPacket(Object component, PacketPlayOutChat.ChatMessageType messageType) throws ReflectiveOperationException;
 
     Object createPlayerInfoPacket(PacketPlayOutPlayerInfo.EnumPlayerInfoAction action,
-                                  List<PacketPlayOutPlayerInfo.PlayerInfoData> players);
+                                  List<PacketPlayOutPlayerInfo.PlayerInfoData> players, ProtocolVersion clientVersion) throws ReflectiveOperationException;
 
-    Object createPlayerListHeaderFooterPacket(IChatBaseComponent header, IChatBaseComponent footer);
+    Object createPlayerListHeaderFooterPacket(IChatBaseComponent header, IChatBaseComponent footer, ProtocolVersion clientVersion) throws ReflectiveOperationException;
 
-    Object createDisplayObjectivePacket(int slot, String objectiveName);
+    Object createDisplayObjectivePacket(int slot, String objectiveName) throws ReflectiveOperationException;
 
     Object createObjectivePacket(int method, String name, Object displayName,
-                                 PacketPlayOutScoreboardObjective.EnumScoreboardHealthDisplay renderType);
+                                 PacketPlayOutScoreboardObjective.EnumScoreboardHealthDisplay renderType) throws ReflectiveOperationException;
 
     Object createScorePacket(PacketPlayOutScoreboardScore.Action action, String objectiveName, String player, int score);
 

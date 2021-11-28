@@ -144,12 +144,12 @@ public final class AdapterImpl implements Adapter {
     }
 
     @Override
-    public Object createPlayerInfoPacket(PacketPlayOutPlayerInfo.EnumPlayerInfoAction action, List<PacketPlayOutPlayerInfo.PlayerInfoData> players) {
+    public Object createPlayerInfoPacket(PacketPlayOutPlayerInfo.EnumPlayerInfoAction action, List<PacketPlayOutPlayerInfo.PlayerInfoData> players, ProtocolVersion clientVersion) {
         return null;
     }
 
     @Override
-    public Object createPlayerListHeaderFooterPacket(IChatBaseComponent header, IChatBaseComponent footer) {
+    public Object createPlayerListHeaderFooterPacket(IChatBaseComponent header, IChatBaseComponent footer, ProtocolVersion clientVersion) {
         return null;
     }
 

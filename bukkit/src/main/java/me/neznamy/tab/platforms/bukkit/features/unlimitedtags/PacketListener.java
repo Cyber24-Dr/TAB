@@ -90,21 +90,11 @@ public class PacketListener extends TabFeature {
 		}
 	}
 
-	private void onEntityDestroy(TabPlayer receiver, List<Integer> entities) {
-		for (int entity : entities) {
-			onEntityDestroy(receiver, entity);
-		}
-	}
-	
 	private void onEntityDestroy(TabPlayer receiver, int... entities) {
 		for (int entity : entities) {
-			onEntityDestroy(receiver, entity);
+			TabPlayer despawnedPlayer = nameTagX.getEntityIdMap().get(entity);
+			if (despawnedPlayer != null && despawnedPlayer.isLoaded() && !nameTagX.isPlayerDisabled(despawnedPlayer)) 
+				TAB.getInstance().getCPUManager().runMeasuredTask("processing EntityDestroy", nameTagX, TabConstants.CpuUsageCategory.PACKET_ENTITY_DESTROY, () -> despawnedPlayer.getArmorStandManager().destroy(receiver));
 		}
-	}
-	
-	private void onEntityDestroy(TabPlayer receiver, int entity) {
-		TabPlayer despawnedPlayer = nameTagX.getEntityIdMap().get(entity);
-		if (despawnedPlayer != null && despawnedPlayer.isLoaded() && !nameTagX.isPlayerDisabled(despawnedPlayer)) 
-			TAB.getInstance().getCPUManager().runMeasuredTask("processing EntityDestroy", nameTagX, TabConstants.CpuUsageCategory.PACKET_ENTITY_DESTROY, () -> despawnedPlayer.getArmorStandManager().destroy(receiver));
 	}
 }
