@@ -2,6 +2,10 @@ package me.neznamy.tab.platforms.bukkit.features.unlimitedtags;
 
 import java.util.UUID;
 
+import me.neznamy.tab.platforms.bukkit.nms.packet.PacketPlayOutEntityDestroy;
+import me.neznamy.tab.platforms.bukkit.nms.packet.PacketPlayOutEntityMetadata;
+import me.neznamy.tab.platforms.bukkit.nms.packet.PacketPlayOutEntityTeleport;
+import me.neznamy.tab.platforms.bukkit.nms.packet.PacketPlayOutSpawnEntityLiving;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;

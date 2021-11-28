@@ -74,7 +74,6 @@ public class Main extends JavaPlugin {
 		String serverPackage = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
 		try {
 			long time = System.currentTimeMillis();
-//			NMSStorage.setInstance(new NMSStorage());
 			if (supportedVersions.contains(serverPackage)) {
 				Bukkit.getConsoleSender().sendMessage(EnumChatFormat.color("&7[TAB] Loaded NMS hook in " + (System.currentTimeMillis()-time) + "ms"));
 				return true;

@@ -57,7 +57,7 @@ public class BukkitPacketBuilder extends PacketBuilder {
 	}
 
 	@Override
-	public Object build(PacketPlayOutChat packet, ProtocolVersion clientVersion) throws ReflectiveOperationException {
+	public Object build(PacketPlayOutChat packet, ProtocolVersion clientVersion) {
 		return AdapterProvider.get().createChatPacket(
 				AdapterProvider.get().adaptComponent(packet.getMessage(), clientVersion),
 				packet.getType()
@@ -65,22 +65,22 @@ public class BukkitPacketBuilder extends PacketBuilder {
 	}
 
 	@Override
-	public Object build(PacketPlayOutPlayerInfo packet, ProtocolVersion clientVersion) throws ReflectiveOperationException {
-		return AdapterProvider.get().createPlayerInfoPacket(packet.getAction(), packet.getEntries(), clientVersion);
+	public Object build(PacketPlayOutPlayerInfo packet, ProtocolVersion clientVersion) {
+		return AdapterProvider.get().createPlayerInfoPacket(packet.getAction(), packet.getEntries());
 	}
 
 	@Override
-	public Object build(PacketPlayOutPlayerListHeaderFooter packet, ProtocolVersion clientVersion) throws ReflectiveOperationException {
-		return AdapterProvider.get().createPlayerListHeaderFooterPacket(packet.getHeader(), packet.getFooter(), clientVersion);
+	public Object build(PacketPlayOutPlayerListHeaderFooter packet, ProtocolVersion clientVersion) {
+		return AdapterProvider.get().createPlayerListHeaderFooterPacket(packet.getHeader(), packet.getFooter());
 	}
 
 	@Override
-	public Object build(PacketPlayOutScoreboardDisplayObjective packet, ProtocolVersion clientVersion) throws ReflectiveOperationException {
+	public Object build(PacketPlayOutScoreboardDisplayObjective packet, ProtocolVersion clientVersion) {
 		return AdapterProvider.get().createDisplayObjectivePacket(packet.getSlot(), packet.getObjectiveName());
 	}
 
 	@Override
-	public Object build(PacketPlayOutScoreboardObjective packet, ProtocolVersion clientVersion) throws ReflectiveOperationException {
+	public Object build(PacketPlayOutScoreboardObjective packet, ProtocolVersion clientVersion) {
 		String displayName = clientVersion.getMinorVersion() < 13 ? cutTo(packet.getDisplayName(), 32) : packet.getDisplayName();
 		return AdapterProvider.get().createObjectivePacket(
 				packet.getMethod(),

@@ -53,9 +53,8 @@ public class DataWatcher {
 	 * Reads NMS data watcher and returns and instance of this class with same data
 	 * @param nmsWatcher - NMS datawatcher to read
 	 * @return an instance of this class with same values
-	 * @throws ReflectiveOperationException 
 	 */
-	public static DataWatcher fromNMS(Object nmsWatcher) throws ReflectiveOperationException {
+	public static DataWatcher fromNMS(Object nmsWatcher) {
 		return AdapterProvider.get().adaptDataWatcher(nmsWatcher);
 	}
 }
