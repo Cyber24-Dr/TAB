@@ -86,7 +86,7 @@ spigot-v115 = { group = "org.spigotmc", name = "spigot", version = "1.15.2" }
 spigot-v116-R1 = { group = "org.spigotmc", name = "spigot", version = "1.16.1" }
 spigot-v116-R2 = { group = "org.spigotmc", name = "spigot", version = "1.16.3" }
 spigot-v116-R3 = { group = "org.spigotmc", name = "spigot", version = "1.16.5" }
-spigot-v117 = { group = "org.spigotmc", name = "spigot", version = "1.17" }
+spigot-v117 = { group = "org.spigotmc", name = "spigot", version = "1.17.1" }
 
 [bundles]
 

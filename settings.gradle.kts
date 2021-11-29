@@ -5,7 +5,7 @@ dependencyResolutionManagement {
     repositories {
         mavenCentral()
         maven("https://jitpack.io")
-        maven("https://repo.pl3x.net/")
+        maven("https://repo.pl3x.net/snapshots")
         maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
         maven("https://repo.viaversion.com/")
         maven("https://repo.aikar.co/content/groups/aikar/")
@@ -19,16 +19,19 @@ dependencyResolutionManagement {
         maven("https://repo.opencollab.dev/maven-snapshots/")
         maven("https://repo.rosewooddev.io/repository/public/")
     }
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
 }
 
 pluginManagement {
-    includeBuild("build-logic")
     repositories {
-        maven("https://papermc.io/repo/repository/maven-public/")
+        maven("https://repo.rosewooddev.io/repository/public/")
+        mavenCentral()
+        gradlePluginPortal()
     }
     plugins {
-        id("io.papermc.paperweight.userdev") version "1.2.0"
+        id("dev.rosewood.mojang-remapper") version "1.0.0"
     }
+    includeBuild("build-logic")
 }
 
 rootProject.name = "TAB"
@@ -54,6 +57,6 @@ include(":bukkit:nms:v1_15")
 include(":bukkit:nms:v1_16_R1")
 include(":bukkit:nms:v1_16_R2")
 include(":bukkit:nms:v1_16_R3")
-//include(":bukkit:nms:v1_17")
+include(":bukkit:nms:v1_17")
 include(":bungeecord")
 include(":jar")
