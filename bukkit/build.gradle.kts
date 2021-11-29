@@ -11,4 +11,5 @@ dependencies {
 
     // NMS
     implementation(projects.bukkit.nms.adapter)
+    implementation(projects.bukkit.nms.v116R3)
 }

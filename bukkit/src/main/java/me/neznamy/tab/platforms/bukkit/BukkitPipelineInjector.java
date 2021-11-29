@@ -29,7 +29,7 @@ public class BukkitPipelineInjector extends PipelineInjector {
 	public class BukkitChannelDuplexHandler extends ChannelDuplexHandler {
 		
 		//injected player
-		private TabPlayer player;
+		private final TabPlayer player;
 		
 		/**
 		 * Constructs new instance with given player
@@ -81,7 +81,7 @@ public class BukkitPipelineInjector extends PipelineInjector {
 		/**
 		 * Removes all real players from team if packet does not come from TAB and reports this to override log
 		 * @param packetPlayOutScoreboardTeam - team packet
-		 * @throws ReflectiveOperationException 
+		 * @throws ReflectiveOperationException when thrown by reflective operation
 		 */
 		private void modifyPlayers(Object packetPlayOutScoreboardTeam) throws ReflectiveOperationException {
 			long time = System.nanoTime();

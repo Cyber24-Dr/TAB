@@ -60,16 +60,16 @@ public interface Adapter {
 
     boolean isInteractionAction(Object packet);
 
-    Collection<String> getTeamPlayers(Object teamPacket);
+    Collection<String> getTeamPlayers(Object teamPacket) throws ReflectiveOperationException;
 
-    void setTeamPlayers(Object teamPacket, Collection<String> players);
+    void setTeamPlayers(Object teamPacket, Collection<String> players) throws ReflectiveOperationException;
 
-    String getTeamName(Object teamPacket);
+    String getTeamName(Object teamPacket) throws ReflectiveOperationException;
 
     Object createChatPacket(Object component, PacketPlayOutChat.ChatMessageType messageType);
 
     Object createPlayerInfoPacket(ProtocolVersion clientVersion, PacketPlayOutPlayerInfo.EnumPlayerInfoAction action,
-                                  List<PacketPlayOutPlayerInfo.PlayerInfoData> players);
+                                  List<PacketPlayOutPlayerInfo.PlayerInfoData> players) throws ReflectiveOperationException;
 
     Object createPlayerListHeaderFooterPacket(ProtocolVersion clientVersion, IChatBaseComponent header, IChatBaseComponent footer);
 
@@ -88,37 +88,37 @@ public interface Adapter {
 
     Object createMetadataPacket(int entityId, DataWatcher metadata);
 
-    Object createSpawnLivingEntityPacket(int entityId, UUID uuid, EntityType type, Location location, DataWatcher dataWatcher);
+    Object createSpawnLivingEntityPacket(int entityId, UUID uuid, EntityType type, Location location, DataWatcher dataWatcher) throws IllegalAccessException;
 
-    Object createTeleportPacket(int entityId, Location location);
+    Object createTeleportPacket(int entityId, Location location) throws IllegalAccessException;
 
-    PacketPlayOutPlayerInfo createPlayerInfoPacket(Object nmsPacket);
+    PacketPlayOutPlayerInfo createPlayerInfoPacket(Object nmsPacket) throws IllegalAccessException;
 
-    PacketPlayOutScoreboardObjective createObjectivePacket(Object nmsPacket);
+    PacketPlayOutScoreboardObjective createObjectivePacket(Object nmsPacket) throws IllegalAccessException;
 
-    PacketPlayOutScoreboardDisplayObjective createDisplayObjectivePacket(Object nmsPacket);
+    PacketPlayOutScoreboardDisplayObjective createDisplayObjectivePacket(Object nmsPacket) throws IllegalAccessException;
 
     Object adaptComponent(IChatBaseComponent component, ProtocolVersion clientVersion);
 
-    int getMoveEntityId(Object packet);
+    int getMoveEntityId(Object packet) throws IllegalAccessException;
 
-    int getTeleportEntityId(Object packet);
+    int getTeleportEntityId(Object packet) throws IllegalAccessException;
 
-    int getPlayerSpawnId(Object packet);
+    int getPlayerSpawnId(Object packet) throws IllegalAccessException;
 
-    int[] getDestroyEntities(Object packet);
+    int[] getDestroyEntities(Object packet) throws IllegalAccessException;
 
-    int getInteractEntityId(Object packet);
+    int getInteractEntityId(Object packet) throws IllegalAccessException;
 
     DataWatcher getLivingEntityMetadata(Object packet);
 
     void setLivingEntityMetadata(Object packet, DataWatcher metadata);
 
-    List<Object> getMetadataEntries(Object packet);
+    List<Object> getMetadataEntries(Object packet) throws IllegalAccessException;
 
     int getMetadataSlot(Object item);
 
     Object getMetadataValue(Object item);
 
-    void setInteractEntityId(Object packet, int entityId);
+    void setInteractEntityId(Object packet, int entityId) throws IllegalAccessException;
 }

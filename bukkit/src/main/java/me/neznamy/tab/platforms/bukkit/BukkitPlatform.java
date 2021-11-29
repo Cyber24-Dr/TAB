@@ -227,20 +227,12 @@ public class BukkitPlatform implements Platform {
 		return Bukkit.getMaxPlayers();
 	}
 
-	public boolean isViaversionEnabled() {
-		return viaversion;
-	}
-
 	public boolean isLibsdisguisesEnabled() {
 		return libsdisguises;
 	}
 	
 	public void setLibsdisguisesEnabled(boolean enabled) {
 		libsdisguises = enabled;
-	}
-
-	public boolean isIdisguiseEnabled() {
-		return idisguise;
 	}
 
 	public Essentials getEssentials() {

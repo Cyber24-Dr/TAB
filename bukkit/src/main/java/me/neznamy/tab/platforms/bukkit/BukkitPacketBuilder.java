@@ -1,6 +1,5 @@
 package me.neznamy.tab.platforms.bukkit;
 
-import java.util.EnumMap;
 import me.neznamy.tab.api.ProtocolVersion;
 import me.neznamy.tab.api.chat.IChatBaseComponent;
 import me.neznamy.tab.api.protocol.PacketBuilder;
@@ -24,22 +23,10 @@ import org.bukkit.entity.EntityType;
 
 public class BukkitPacketBuilder extends PacketBuilder {
 
-	//entity type ids
-	private final EnumMap<EntityType, Integer> entityIds = new EnumMap<>(EntityType.class);
-
 	/**
 	 * Constructs new instance
 	 */
 	public BukkitPacketBuilder() {
-		if (AdapterProvider.getMinorVersion() >= 13) {
-			entityIds.put(EntityType.ARMOR_STAND, 1);
-			entityIds.put(EntityType.WITHER, 83);
-		} else {
-			entityIds.put(EntityType.WITHER, 64);
-			if (AdapterProvider.getMinorVersion() >= 8){
-				entityIds.put(EntityType.ARMOR_STAND, 30);
-			}
-		}
 		buildMap.put(PacketPlayOutEntityMetadata.class, (packet, version) -> build((PacketPlayOutEntityMetadata)packet));
 		buildMap.put(PacketPlayOutEntityTeleport.class, (packet, version) -> build((PacketPlayOutEntityTeleport)packet));
 		buildMap.put(PacketPlayOutEntityDestroy.class, (packet, version) -> build((PacketPlayOutEntityDestroy)packet));
@@ -47,9 +34,9 @@ public class BukkitPacketBuilder extends PacketBuilder {
 	}
 
 	@Override
-	public Object build(PacketPlayOutBoss packet, ProtocolVersion clientVersion) {
+	public Object build(PacketPlayOutBoss packet, ProtocolVersion clientVersion) throws IllegalAccessException {
 		if (AdapterProvider.getMinorVersion() >= 9 || clientVersion.getMinorVersion() >= 9) {
-			//1.9+ server or client, handled by bukkit api or viaversion
+			//1.9+ server or client, handled by bukkit api or ViaVersion
 			return packet;
 		}
 		//<1.9 client and server
@@ -65,7 +52,7 @@ public class BukkitPacketBuilder extends PacketBuilder {
 	}
 
 	@Override
-	public Object build(PacketPlayOutPlayerInfo packet, ProtocolVersion clientVersion) {
+	public Object build(PacketPlayOutPlayerInfo packet, ProtocolVersion clientVersion) throws ReflectiveOperationException {
 		return AdapterProvider.get().createPlayerInfoPacket(clientVersion, packet.getAction(), packet.getEntries());
 	}
 
@@ -117,11 +104,6 @@ public class BukkitPacketBuilder extends PacketBuilder {
 		);
 	}
 
-	/**
-	 * Builds entity destroy packet with given parameter
-	 * @param id - entity id to destroy
-	 * @return destroy packet
-	 */
 	public Object build(PacketPlayOutEntityDestroy packet) {
 		return AdapterProvider.get().createEntityDestroyPacket(packet.getEntities());
 	}
@@ -130,16 +112,7 @@ public class BukkitPacketBuilder extends PacketBuilder {
 		return AdapterProvider.get().createMetadataPacket(packet.getEntityId(), packet.getDataWatcher());
 	}
 
-	/**
-	 * Builds entity spawn packet with given parameters
-	 * @param entityId - entity id
-	 * @param uuid - entity uuid
-	 * @param entityType - entity type
-	 * @param loc - location to spawn at
-	 * @param dataWatcher - datawatcher
-	 * @return entity spawn packet
-	 */
-	public Object build(PacketPlayOutSpawnEntityLiving packet) {
+	public Object build(PacketPlayOutSpawnEntityLiving packet) throws IllegalAccessException {
 		return AdapterProvider.get().createSpawnLivingEntityPacket(
 				packet.getEntityId(),
 				packet.getUniqueId(),
@@ -149,38 +122,26 @@ public class BukkitPacketBuilder extends PacketBuilder {
 		);
 	}
 
-	/**
-	 * Builds entity teleport packet with given parameters
-	 * @param entityId - entity id
-	 * @param location - location to teleport to
-	 * @return entity teleport packet
-	 */
-	public Object build(PacketPlayOutEntityTeleport packet) {
+	public Object build(PacketPlayOutEntityTeleport packet) throws IllegalAccessException {
 		return AdapterProvider.get().createTeleportPacket(packet.getEntityId(), packet.getLocation());
 	}
 	
 	@Override
-	public PacketPlayOutPlayerInfo readPlayerInfo(Object nmsPacket, ProtocolVersion clientVersion) {
+	public PacketPlayOutPlayerInfo readPlayerInfo(Object nmsPacket, ProtocolVersion clientVersion) throws IllegalAccessException {
 		return AdapterProvider.get().createPlayerInfoPacket(nmsPacket);
 	}
 
 	@Override
-	public PacketPlayOutScoreboardObjective readObjective(Object nmsPacket, ProtocolVersion clientVersion) {
+	public PacketPlayOutScoreboardObjective readObjective(Object nmsPacket, ProtocolVersion clientVersion) throws IllegalAccessException {
 		return AdapterProvider.get().createObjectivePacket(nmsPacket);
 	}
 
 	@Override
-	public PacketPlayOutScoreboardDisplayObjective readDisplayObjective(Object nmsPacket, ProtocolVersion clientVersion) {
+	public PacketPlayOutScoreboardDisplayObjective readDisplayObjective(Object nmsPacket, ProtocolVersion clientVersion) throws IllegalAccessException {
 		return AdapterProvider.get().createDisplayObjectivePacket(nmsPacket);
 	}
 
-	/**
-	 * Builds entity bossbar packet
-	 * @param packet - packet to build
-	 * @param clientVersion - client version
-	 * @return entity bossbar packet
-	 */
-	private Object buildBossPacketEntity(PacketPlayOutBoss packet, ProtocolVersion clientVersion) {
+	private Object buildBossPacketEntity(PacketPlayOutBoss packet, ProtocolVersion clientVersion) throws IllegalAccessException {
 		if (packet.getOperation() == Action.UPDATE_STYLE) return null; //nothing to do here
 
 		int entityId = packet.getId().hashCode();
